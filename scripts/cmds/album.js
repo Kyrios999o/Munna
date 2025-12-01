@@ -30,7 +30,7 @@ module.exports = {
 
       if (args[0] === "add") {
         if (!args[1]) {
-        return api.sendMessage("❌ Please specify a category. Usage: !a add [category]", event.threadID, event.messageID);   }
+        return api.sendMessage("Please specify a category. Usage: !a add [category]", event.threadID, event.messageID);   }
         const category = args[1].toLowerCase(); if (event.messageReply && event.messageReply.attachments && event.messageReply.attachments.length > 0) {
         const attachment = event.messageReply.attachments[0];
         if (attachment.type !== "video") {
@@ -42,14 +42,12 @@ module.exports = {
         Authorization: "Client-ID 137256035dcfdcc"} }   );
         const imgurLink = response.data?.data?.link;
         if (!imgurLink) throw new Error("Imgur upload failed");  try {
-        const uploadResponse = await axios.post(`${apiUrl}/api/album/add`, {
-              category,
-              videoUrl: imgurLink,
-            });
+        const uploadResponse = await axios.post(`${apiUrl}/api/album/add`, {  category,  videoUrl: imgurLink,
+      });
 
-            return api.sendMessage(uploadResponse.data.message, event.threadID, event.messageID);
-          } catch (error) {
-            return api.sendMessage(`❌ Failed to upload video.\nError: ${error.response?.data?.error || error.message}`, event.threadID, event.messageID);
+        return api.sendMessage(uploadResponse.data.message, event.threadID, event.messageID);
+       } catch (error) {
+         return api.sendMessage(`❌ Failed to upload video.\nError: ${error.response?.data?.error || error.message}`, event.threadID, event.messageID);
           }
 
         } catch (error) {
@@ -58,19 +56,12 @@ module.exports = {
       }
 
       if (!args[2]) {
-        return api.sendMessage("❌ Please provide a video URL or reply to a video message.", event.threadID, event.messageID);
-      }
-
-      const videoUrl = args[2];
-      try {
-        const response = await axios.post(`${apiUrl}/api/add`, {
-          category,
-          videoUrl,
-        });
-
-        return api.sendMessage(response.data.message, event.threadID, event.messageID);
-      } catch (error) {
-        return api.sendMessage(`❌ Error: ${error.response?.data?.error || error.message}`, event.threadID, event.messageID);
+      return api.sendMessage("❌ Please provide a video URL or reply to a video message.", event.threadID, event.messageID);   }
+      const videoUrl = args[2];   try {
+      const response = await axios.post(`${apiUrl}/api/add`, {    category,    videoUrl,  });
+      return api.sendMessage(response.data.message, event.threadID, event.messageID);
+    } catch (error) {
+      return api.sendMessage(`❌ Error: ${error.response?.data?.error || error.message}`, event.threadID, event.messageID);
       }
 
     } else if (args[0] === "list") {
