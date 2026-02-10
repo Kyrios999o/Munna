@@ -17,7 +17,7 @@ module.exports = {
     version: "1.7",
     author: "MahMUD",
     countDown: 10,
-    category: "info",
+    category: "github",
     guide: { en: "{pn} [username]" }
   },
 
