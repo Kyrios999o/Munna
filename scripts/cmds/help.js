@@ -62,7 +62,7 @@ module.exports = {
                         if (langCode === "vi") helpHint = `Nhập ${prefix}help <lệnh> để xem chi tiết.`;
 
                         msg += `\n\n⭔ Total Commands: ${totalCommands}\n⭔ ${helpHint}\n`;
-                        msg += `\n╭─✦ ADMIN: MahMUD 彡\n├‣ FACEBOOK\n╰‣ m.me/mahmud0x7`;
+                        msg += `\n╭─✦ ADMIN: MahMUD 彡\n├‣ WHATSAPP\n╰‣ 01836298139`;
 
                         try {
                                 const hh = await message.reply({ body: msg });
