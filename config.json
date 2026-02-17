@@ -1,5 +1,6 @@
 {
-  "facebookAccount": {
+   "author": ["MahMUD"],
+    "facebookAccount": {
     "email": "mahmudx077@gmail.com",
     "password": "",
     "2FASecret": "",
